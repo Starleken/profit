@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="RegistrationWindowName">Регистрация</string>
+    <string name="AvtorizationWindowName">Авторизация</string>
+    <string name="EnterButton">Продолжить</string>
+    <string name="LoginButton">Войти в существующий аккаунт</string>
+    <string name="RegistrationButton">Зарегистрироваться</string>
+    <string name="title_activity_menu">activity_menu</string>
+</resources>
