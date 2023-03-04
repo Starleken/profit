@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, AvtorizationActivity.class));
     }
 
-    //TODO To make transition to MainMenu and to realize check exceptions
     private void goToMainMenu() {
         try {
             tryCheckFieldsAtNull();
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        startActivity(new Intent(this, MainMenuActivity.class));
+        startActivity(new Intent(this, MenuActivity.class));
     }
 
     private void tryCheckFieldsAtNull() throws FieldIsEmptyException {
