@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "595875485283",
+    "firebase_url": "https://profit-a4d4d-default-rtdb.firebaseio.com",
+    "project_id": "profit-a4d4d",
+    "storage_bucket": "profit-a4d4d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595875485283:android:75b7e8b376f9cf8fa10a56",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595875485283-e4int7evbh5shd1h2gnledg32uckbutl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvE4ASXGQdp8ESXMrnjhlAA17OoQIWIPA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595875485283-e4int7evbh5shd1h2gnledg32uckbutl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
