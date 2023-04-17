@@ -4,23 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Debug;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.myapplication.Scripts.Database.DatabaseLessonSaver;
 import com.example.myapplication.Scripts.Database.DatabaseUserLoader;
 import com.example.myapplication.Scripts.Database.DatabaseUserSaver;
 import com.example.myapplication.Scripts.Exceptions.FieldIsEmptyException;
-import com.example.myapplication.Scripts.Exceptions.UserIsNotFound;
 import com.example.myapplication.Scripts.Exceptions.UserIsNotSaved;
+import com.example.myapplication.Scripts.Model.Lesson;
 import com.example.myapplication.Scripts.Model.User;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.google.firebase.database.DatabaseReference;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText password;
     private EditText login;
 
-    private DatabaseUserLoader loader;
+    private DatabaseUserSaver saver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,17 +37,15 @@ public class MainActivity extends AppCompatActivity {
         findViews();
         setListeners();
 
-        loader = new DatabaseUserLoader();
-
-        loader.getUsers();
+        saver = new DatabaseUserSaver();
     }
 
     private void findViews() {
-        enterButton = findViewById(R.id.buttonEnter);
-        loginButton = findViewById(R.id.buttonLogin);
+        enterButton = findViewById(R.id.avtButtonEnter);
+        loginButton = findViewById(R.id.avtButtonLogin);
 
-        password = findViewById(R.id.editTextTextPassword);
-        login = findViewById(R.id.editTextTextPersonName);
+        password = findViewById(R.id.avtEditTextTextPassword);
+        login = findViewById(R.id.avtEditTextTextPersonName);
     }
 
     private void setListeners() {
@@ -74,35 +69,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void RegisterUser() {
+
         try {
             tryCheckFieldsAtNull();
 
-            //DatabaseUserSaver userSaver = new DatabaseUserSaver();
+            User user = new User("User", login.getText().toString(), password.getText().toString());
 
-
-
-            for(User user : loader.users){
-                Log.w("gfdgd", "gfdgdfg");
-            }
-
-            //User user = new User("User", login.getText().toString(), password.getText().toString());
-
-            //userSaver.TrySave(user);
+            saver.TrySave(user);
         }
-        catch (FieldIsEmptyException ex) {
-            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
-            return;
+        catch (FieldIsEmptyException ex){
+            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
-        /*catch (UserIsNotSaved ex) {
-            Toast.makeText(getApplicationContext(),ex.getMessage(), Toast.LENGTH_LONG).show();
-            return;
+        catch(UserIsNotSaved ex){
+            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
-         */
-        /*catch (UserIsNotFound ex) {
-            Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_LONG).show();
-            return;
-        }
-         */
+
+
+        goToAvtorization();
     }
 
     private void goToMainMenu() {

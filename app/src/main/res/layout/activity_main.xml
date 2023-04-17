@@ -34,7 +34,7 @@
         tools:text="@string/RegistrationWindowName" />
 
     <Button
-        android:id="@+id/buttonEnter"
+        android:id="@+id/avtButtonEnter"
         android:layout_width="192dp"
         android:layout_height="61dp"
         android:backgroundTint="@color/orange"
@@ -47,7 +47,7 @@
         app:layout_constraintVertical_bias="0.759" />
 
     <Button
-        android:id="@+id/buttonLogin"
+        android:id="@+id/avtButtonLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#00FFFFFF"
@@ -57,11 +57,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEnter"
+        app:layout_constraintTop_toBottomOf="@+id/avtButtonEnter"
         app:layout_constraintVertical_bias="0.061" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/avtEditTextTextPassword"
         android:layout_width="297dp"
         android:layout_height="55dp"
         android:layout_marginBottom="60dp"
@@ -71,14 +71,14 @@
         android:textColor="#6E727B"
         android:textColorHint="#6E727B"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonEnter"
+        app:layout_constraintBottom_toTopOf="@+id/avtButtonEnter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
         app:layout_constraintVertical_bias="0.906" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/avtEditTextTextPersonName"
         android:layout_width="297dp"
         android:layout_height="54dp"
         android:ems="10"
@@ -87,7 +87,7 @@
         android:textColor="#6E727B"
         android:textColorHint="#6E727B"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
+        app:layout_constraintBottom_toTopOf="@+id/avtEditTextTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"

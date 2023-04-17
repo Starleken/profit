@@ -28,10 +28,13 @@ public class DatabaseUserLoader {
         users = new ArrayList<>();
     }
 
-    public ArrayList<User> getUsers() {
+    public void initUsers() {
         database.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (users.size() > 0) {
+                    users.clear();
+                }
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     users.add(ds.getValue(User.class));
                 }
@@ -42,19 +45,12 @@ public class DatabaseUserLoader {
                 Log.d("gfdgdf","Ошибка чтения");
             }
         });
-        Log.d("gfdgdf",String.format(Integer.toString(users.size())));
-        return users;
     }
 
     //TODO Изменить отправляемую ошибку и поиск юзера
     public User findUserByLogin(String login) throws UserIsNotFound {
-        ArrayList<User> users = getUsers();
-
-        Log.w("find", String.format("user.login"));
-
         for(User user : users) {
-            if (user.login == login) {
-                Log.w("find", String.format("gfgodnfgjndfogndf"));
+            if (user.login.equals(login)) {
                 return user;
             }
         }
