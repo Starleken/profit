@@ -6,27 +6,34 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/IconView"
         android:layout_width="58dp"
         android:layout_height="54dp"
-        app:srcCompat="@drawable/lession"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/lession" />
 
     <TextView
-        android:id="@+id/IconLesson"
+        android:id="@+id/NameLesson"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:text="Баланс БЖУ"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
-        tools:layout_editor_absoluteX="84dp"
-        tools:layout_editor_absoluteY="16dp" />
+        app:layout_constraintStart_toEndOf="@+id/IconView"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/DurationLesson"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:text="Длительность:"
-        tools:layout_editor_absoluteX="85dp"
-        tools:layout_editor_absoluteY="48dp" />
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/IconView"
+        app:layout_constraintTop_toBottomOf="@+id/NameLesson" />
 </androidx.constraintlayout.widget.ConstraintLayout>

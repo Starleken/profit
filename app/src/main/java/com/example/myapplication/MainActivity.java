@@ -10,14 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.myapplication.Scripts.Database.DatabaseLessonSaver;
-import com.example.myapplication.Scripts.Database.DatabaseUserLoader;
-import com.example.myapplication.Scripts.Database.DatabaseUserSaver;
+import com.example.myapplication.Scripts.Database.User.DatabaseUserSaver;
 import com.example.myapplication.Scripts.Exceptions.FieldIsEmptyException;
 import com.example.myapplication.Scripts.Exceptions.UserIsNotSaved;
-import com.example.myapplication.Scripts.Model.Lesson;
 import com.example.myapplication.Scripts.Model.User;
-import com.google.firebase.database.DatabaseReference;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setListeners();
 
         saver = new DatabaseUserSaver();
+
     }
 
     private void findViews() {

@@ -1,4 +1,4 @@
-package com.example.myapplication.Scripts.Database;
+package com.example.myapplication.Scripts.Database.User;
 
 import android.content.Intent;
 import android.os.Debug;
@@ -6,6 +6,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import com.example.myapplication.Scripts.Database.TableContants;
 import com.example.myapplication.Scripts.Exceptions.FieldIsEmptyException;
 import com.example.myapplication.Scripts.Exceptions.UserIsNotFound;
 import com.example.myapplication.Scripts.Model.User;

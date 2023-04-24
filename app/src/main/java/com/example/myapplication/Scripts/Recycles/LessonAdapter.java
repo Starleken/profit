@@ -16,18 +16,26 @@ import com.example.myapplication.Scripts.Model.Lesson;
 import java.util.ArrayList;
 
 public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder> {
-    private final ArrayList<Lesson> lessons;
-    private final LayoutInflater inflater;
 
-    public LessonAdapter(Context context, ArrayList<Lesson> lessons){
+    public interface OnLessonClickListener{
+        void onStateClick(Lesson lesson, int position);
+    }
+
+    private final OnLessonClickListener onClickListener;
+
+    private ArrayList<Lesson> lessons;
+    private Context context;
+
+    public LessonAdapter(Context context, ArrayList<Lesson> lessons, OnLessonClickListener onClickListener){
         this.lessons = lessons;
-        this.inflater = LayoutInflater.from(context);
+        this.onClickListener = onClickListener;
+        this.context = context;
     }
 
     @NonNull
     @Override
     public LessonAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.lessons, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.lessons, parent, false);
         return new ViewHolder(view);
     }
 
@@ -36,7 +44,15 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
         Lesson lesson = lessons.get(position);
         //holder.iconView.setImageIcon();
         holder.nameView.setText(lesson.Name);
-        holder.durationView.setText(lesson.Duration);
+        holder.durationView.setText(String.format("Длительность: %s", lesson.Duration));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v)
+            {
+                onClickListener.onStateClick(lesson, position);
+            }
+        });
     }
 
     @Override
@@ -51,8 +67,8 @@ public class LessonAdapter extends RecyclerView.Adapter<LessonAdapter.ViewHolder
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            iconView = itemView.findViewById(R.id.IconLesson);
-            nameView = itemView.findViewById(R.id.IconLesson);
+            iconView = itemView.findViewById(R.id.IconView);
+            nameView = itemView.findViewById(R.id.NameLesson);
             durationView = itemView.findViewById(R.id.DurationLesson);
         }
     }

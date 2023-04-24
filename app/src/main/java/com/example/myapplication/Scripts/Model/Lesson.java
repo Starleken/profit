@@ -1,6 +1,10 @@
 package com.example.myapplication.Scripts.Model;
 
-public class Lesson {
+import java.io.Serializable;
+
+public class Lesson implements Serializable {
     public String Name;
-    public String Duration;
+    public int Duration;
+
+    public String Text;
 }

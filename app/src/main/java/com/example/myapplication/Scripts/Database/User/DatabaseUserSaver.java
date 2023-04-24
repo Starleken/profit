@@ -1,21 +1,21 @@
-package com.example.myapplication.Scripts.Database;
+package com.example.myapplication.Scripts.Database.User;
 
+import com.example.myapplication.Scripts.Database.TableContants;
 import com.example.myapplication.Scripts.Exceptions.UserIsNotSaved;
-import com.example.myapplication.Scripts.Model.Lesson;
 import com.example.myapplication.Scripts.Model.User;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class DatabaseLessonSaver {
+public class DatabaseUserSaver {
     private DatabaseReference database;
 
-    public DatabaseLessonSaver(){
-        database = FirebaseDatabase.getInstance().getReference(TableContants.LESSON_TABLE);
+    public DatabaseUserSaver() {
+        database = FirebaseDatabase.getInstance().getReference(TableContants.USER_TABLE);
     }
 
-    public void TrySave(Lesson lesson) throws UserIsNotSaved {
+    public void TrySave(User user) throws UserIsNotSaved {
         try {
-            database.push().setValue(lesson);
+            database.push().setValue(user);
         }
         catch (Exception ex) {
             throw new UserIsNotSaved(ex.getMessage());

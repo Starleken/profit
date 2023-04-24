@@ -2,22 +2,23 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.myapplication.Scripts.Database.DatabaseUserLoader;
+import com.example.myapplication.Scripts.Database.Lesson.DatabaseLessonLoader;
+import com.example.myapplication.Scripts.Database.Recept.DatabaseReceptLoader;
+import com.example.myapplication.Scripts.Database.Recept.DatabaseReceptSaver;
+import com.example.myapplication.Scripts.Database.User.DatabaseUserLoader;
 import com.example.myapplication.Scripts.Exceptions.FieldIsEmptyException;
 import com.example.myapplication.Scripts.Exceptions.UserIsNotFound;
+import com.example.myapplication.Scripts.Exceptions.UserIsNotSaved;
+import com.example.myapplication.Scripts.Model.Recept;
 import com.example.myapplication.Scripts.Model.User;
-
-import java.util.logging.ConsoleHandler;
 
 public class AvtorizationActivity extends AppCompatActivity {
 
@@ -37,8 +38,7 @@ public class AvtorizationActivity extends AppCompatActivity {
         findViews();
         setListeners();
 
-        loader = new DatabaseUserLoader();
-        loader.initUsers();
+        GetDataFromDatabase();
     }
 
     private void findViews(){
@@ -74,6 +74,10 @@ public class AvtorizationActivity extends AppCompatActivity {
 
             tryFindUser();
 
+            Recept recept = new Recept();
+            recept.Name = "Шаурма по китайски";
+            recept.Text = "Самое вкусное тесто";
+
             goToMainMenu();
         }
         catch (FieldIsEmptyException ex){
@@ -82,6 +86,7 @@ public class AvtorizationActivity extends AppCompatActivity {
         catch (UserIsNotFound ex){
             Toast.makeText(getApplicationContext(), ex.getMessage(), Toast.LENGTH_SHORT).show();
         }
+
     }
 
     private void goToMainMenu() {
@@ -105,5 +110,16 @@ public class AvtorizationActivity extends AppCompatActivity {
         else if(TextUtils.isEmpty(login.getText())) {
             throw new FieldIsEmptyException("Заполните логин");
         }
+    }
+
+    private void GetDataFromDatabase(){
+        DatabaseLessonLoader lessonloader = new DatabaseLessonLoader();
+        lessonloader.initLessons();
+
+        DatabaseReceptLoader receptLoader = new DatabaseReceptLoader();
+        receptLoader.initRecepts();
+
+        loader = new DatabaseUserLoader();
+        loader.initUsers();
     }
 }

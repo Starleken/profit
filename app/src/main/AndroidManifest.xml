@@ -26,6 +26,9 @@
         <activity
             android:name=".AvtorizationActivity"
             android:exported="true" />
+        <activity
+            android:name=".LessonActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
